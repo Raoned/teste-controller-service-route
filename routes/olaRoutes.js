@@ -2,6 +2,6 @@ const express = require("express");
 const router = express.Router();
 const olaController = require("../controller/olaController");
 
-router.get("/", olaController.falarOla);
+router.get("/ola", olaController.falarOla);
 
 module.exports = router;

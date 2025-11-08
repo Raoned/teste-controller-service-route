@@ -1,14 +1,10 @@
-const olaService = require("../services/olaService.js");
+const olaService = require("../services/olaService");
 
-const falarOla = (req, res) => {
+exports.falarOla = (req, res, next) => {
   try {
-    const message = olaService.mensagemDeOla();
-    res.status(200).send(message);
-  } catch (error) {
-    res.status(500).send("Ocorreu um erro no servidor.");
+    const payload = olaService.mensagemDeOla();
+    return res.status(200).json(payload); // changed code: garante JSON consistente
+  } catch (err) {
+    next(err);
   }
-};
-
-module.exports = {
-  falarOla,
 };
